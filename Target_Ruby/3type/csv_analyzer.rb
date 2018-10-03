@@ -2,6 +2,7 @@ require 'kconv'
 require 'csv'
 require 'active_support/all'
 require_relative 'csv_export.rb'
+require_relative 'race_id_converter.rb'
 
 class CSVAnalyzer
   def initialize
@@ -34,10 +35,13 @@ class CSVAnalyzer
         insert_data << row[0]
         next
       end
-      # マイニング + 対戦型マイニング + BCIndex
-      #data = row[2].to_f + row[3].to_f + row[4].to_f
+      bc = row[4].to_f
+      if bc == 0.0
+        insert_data = []
+        next
+      end
       # 対戦型マイニング + BCIndex
-      data = row[3].to_f + row[4].to_f
+      data = row[3].to_f + bc
       insert_data << data
     end
   end
