@@ -44,6 +44,8 @@ class CSVAnalyzer
       data = row[3].to_f + bc
       insert_data << data
     end
+
+    insert_csv(klass, insert_data)
   end
 
   def insert_csv(klass, insert_data)
