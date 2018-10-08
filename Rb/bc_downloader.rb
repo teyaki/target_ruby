@@ -9,7 +9,7 @@ class BCDownloader
   def initialize(year)
     @year = year.to_i
     @read_root = "http://uma-blo.com/bc2012/wp-content/uploads"
-    @write_root = "C:/TFJV/BCindex"
+    @write_root = "../BCindex"
 
 
     exec_download(:saturday)
